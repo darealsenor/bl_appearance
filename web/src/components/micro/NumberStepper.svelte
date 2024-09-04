@@ -35,6 +35,15 @@
         dispatch('change', value);
     }
 
+    function handleKeypress(e) {
+         if (e.code === 'KeyA') {
+            decrement()
+         }
+         if (e.code === 'KeyD') {
+            increment()
+         }
+	}
+
     function decrement() {
         if (value > 0) {
             value -= 1;
@@ -91,6 +100,7 @@
         class="w-full relative h-full"
         bind:value
         on:input={handleInput}
+        on:keypress={handleKeypress}
     />
 
     {#if isBlacklisted}
