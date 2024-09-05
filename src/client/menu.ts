@@ -19,6 +19,8 @@ export async function openMenu(zone: TAppearanceZone | TAppearanceZone['type'], 
         return;
     }
 
+    LocalPlayer.state.appearance = true
+
     let pedHandle = PlayerPedId()
     const configMenus = config.menus()
     const isString = typeof zone === 'string'
@@ -156,4 +158,6 @@ export function closeMenu() {
         resolvePromise();
     }
     open = false
+
+    LocalPlayer.state.appearance = false
 }
