@@ -71,6 +71,7 @@ if (core == 'qb' || core == 'qbx' && GetResourceState(frameworkName) == 'started
 illeniumCompat();
 
 async function reloadSkin() {
+    if (!LocalPlayer.state.inSafeZone) return false;
     const frameworkID = await getFrameworkID();
     const ped = PlayerPedId();
     const maxhealth = GetEntityMaxHealth(ped);
@@ -87,7 +88,6 @@ async function reloadSkin() {
 
     SetEntityHealth(ped, health);
     SetPedArmour(ped, armor);
-
 }
 
 onNet('bl_appearance:client:reloadSkin', async () => await reloadSkin());
